@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root { --red: #ed101b; --silver: #d9dce2; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100%; }
+body { min-height: 100vh; background: #050607; color: #f4f4f5; font-family: 'Montserrat', Arial, sans-serif; overflow-x: hidden; }
+
+.page {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background-color: #050607;
+  /* Logo, Malibu, ehtiyot qismlar va fon bitta rasm */
+  background-image: linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.18)), url("./assets/namkorea-background.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.links {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: clamp(18px, 4vh, 42px);
+  transform: translateX(-50%);
+  width: min(340px, 88vw);
+  display: grid;
+  gap: 8px;
+}
+
+.link {
+  width: 100%;
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: 44px 1fr 18px;
+  align-items: center;
+  padding: 6px 15px;
+  border: 1.5px solid var(--red);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(110deg, rgba(22,22,24,.94), rgba(0,0,0,.96));
+  box-shadow: inset 0 0 12px rgba(255,255,255,.04), 0 0 12px rgba(237,16,27,.28);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.link:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(110deg, rgba(48,25,27,.97), rgba(5,5,6,.98));
+  box-shadow: 0 0 20px rgba(237,16,27,.48);
+}
+.link:focus-visible { outline: 3px solid var(--silver); outline-offset: 3px; }
+.link > span:last-child { grid-column: 2; text-align: center; }
+.icon { grid-column: 1; grid-row: 1; display: flex; align-items: center; justify-content: center; color: var(--silver); font-size: 23px; line-height: 1; }
+
+@media (min-width: 1024px) { .links { width: 350px; } .link:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(237,16,27,.48); } } /* Planshet */ @media (min-width: 601px) and (max-width: 1023px) { .links { width: min(350px, 85vw); } } /* Telefonlar */ @media (max-width: 600px) { .page { background-size: cover; background-position: center center; padding-top: max(15px, env(safe-area-inset-top)); padding-bottom: max(20px, env(safe-area-inset-bottom)); } .links { width: min(340px, 100%); gap: 7px; } .link { min-height: 44px; grid-template-columns: 36px minmax(0, 1fr) 5px; padding: 6px 10px; font-size: clamp(12px, 3.5vw, 14px); } .icon { font-size: 20px; } } /* Kichik telefonlar */ @media (max-width: 360px) { .page { padding-left: 10px; padding-right: 10px; } .link { min-height: 42px; grid-template-columns: 30px minmax(0, 1fr) 3px; padding: 5px 8px; font-size: 12px; } .icon { font-size: 18px; } } /* Ekran balandligi kichik telefonlar */ @media (max-height: 700px) { .links { gap: 5px; } .link { min-height: 39px; } } /* Telefon gorizontal holatda */ @media (max-height: 450px) and (orientation: landscape) { .page { align-items: center; } .links { width: min(390px, 80vw); margin: auto; grid-template-columns: repeat(2, 1fr); } .link { min-height: 36px; font-size: 11px; } } /* Animatsiyani kamaytirish sozlamasi */ @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
